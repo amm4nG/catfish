@@ -20,10 +20,11 @@
 
                     <div class="card">
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-                            @if (Auth::user()->foto != "")
-                            <img src="{{ asset('public/' . Auth::user()->foto) }}" alt="Profile" class="rounded-circle">
+                            @if (Auth::user()->foto != '')
+                                <img src="{{ asset('public/' . Auth::user()->foto) }}" alt="Profile"
+                                    class="rounded-circle">
                             @else
-                            <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
+                                <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
                             @endif
                             <h2>
                                 {{ Auth::user()->nama }}
@@ -108,7 +109,13 @@
                                             <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile
                                                 Image</label>
                                             <div class="col-md-8 col-lg-9">
-                                                <img src="{{ asset('storage/' . Auth::user()->foto) }}" alt="Profile">
+                                                @if (Auth::user()->foto != '')
+                                                    <img src="{{ asset('public/' . Auth::user()->foto) }}" alt="Profile"
+                                                        class="rounded-circle">
+                                                @else
+                                                    <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile"
+                                                        class="rounded-circle">
+                                                @endif
                                                 <div class="pt-2">
                                                     <input name="foto" type="file" class="form-control"
                                                         id="foto">
@@ -169,13 +176,14 @@
                                             <label for="password" class="col-md-4 col-lg-3 col-form-label">Password
                                                 Baru</label>
                                             <div class="col-md-8 col-lg-9">
-                                                <input name="password" required type="password" class="form-control @error('password')
+                                                <input name="password" required type="password"
+                                                    class="form-control @error('password')
                                                     is-invalid
                                                 @enderror"
                                                     id="password">
-                                                    @error('password')
-                                                        <p class="text-danger">{{ $message }}</p>
-                                                    @enderror
+                                                @error('password')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -186,7 +194,8 @@
                                                 <input name="password_confirmation" required type="password"
                                                     class="form-control @error('password_confirmation')
                                                     is-invalid
-                                                @enderror" id="password_confirmation">
+                                                @enderror"
+                                                    id="password_confirmation">
                                             </div>
                                         </div>
 

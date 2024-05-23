@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -38,11 +39,17 @@ class ProfileController extends Controller
 
     public function changePassword(Request $request, $id)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'passwordLama' => 'required',
             'password' => 'required|confirmed',
             'password_confirmation' => 'required',
         ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors([
+                'message' => $validator->errors()->first(),
+            ]);
+        }
 
         $user = Auth::user();
 
