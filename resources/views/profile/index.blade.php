@@ -20,8 +20,11 @@
 
                     <div class="card">
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-                            <img src="{{ asset('storage/' . Auth::user()->foto) }}" alt="Profile" class="rounded-circle">
+                            @if (Auth::user()->foto != "")
+                            <img src="{{ asset('public/' . Auth::user()->foto) }}" alt="Profile" class="rounded-circle">
+                            @else
+                            <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
+                            @endif
                             <h2>
                                 {{ Auth::user()->nama }}
                             </h2>
