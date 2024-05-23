@@ -69,7 +69,7 @@
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
                         @if (Auth::user()->foto != "")
-                            <img src="{{ asset('storage/' . Auth::user()->foto) }}" alt="Profile"
+                            <img src="{{ asset('public/' . Auth::user()->foto) }}" alt="Profile"
                                 class="rounded-circle" style="background-color: white;">
                         @else
                             <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle"
