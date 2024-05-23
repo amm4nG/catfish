@@ -71,7 +71,11 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
-                        <img src="{{ asset('storage/'.Auth::user()->foto) }}" alt="Profile" class="rounded-circle"
+                        @if (Auth::user()->foto)
+                            <img src="{{ asset('storage/' . Auth::user()->foto) }}" alt="Profile"
+                                class="rounded-circle" style="background-color: white;">
+                        @endif
+                        <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle"
                             style="background-color: white;">
                         <span class="d-none d-md-block dropdown-toggle ps-2" style="color: white;">
                             {{ Auth::user()->username }}
