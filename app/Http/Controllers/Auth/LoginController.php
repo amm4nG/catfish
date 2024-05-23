@@ -15,10 +15,12 @@ class LoginController extends Controller
 
     public function validationUser(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'username' => 'required',
             'password' => 'required',
         ]);
+
+        $credentials = $request->only(['username', 'password']);
 
         if (Auth::attempt($credentials)) {
             return redirect('home')->with([
