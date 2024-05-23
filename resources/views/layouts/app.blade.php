@@ -64,19 +64,17 @@
                 </li><!-- End Search Icon-->
 
                 <!-- End Notification Nav -->
-
-
-
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
-                        @if (Auth::user()->foto)
+                        @if (Auth::user()->foto != null)
                             <img src="{{ asset('storage/' . Auth::user()->foto) }}" alt="Profile"
                                 class="rounded-circle" style="background-color: white;">
+                        @else
+                            <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle"
+                                style="background-color: white;">
                         @endif
-                        <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle"
-                            style="background-color: white;">
                         <span class="d-none d-md-block dropdown-toggle ps-2" style="color: white;">
                             {{ Auth::user()->username }}
                         </span>
