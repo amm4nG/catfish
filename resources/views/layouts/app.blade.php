@@ -44,7 +44,7 @@
         style="background-color: #4159AF; color: white;">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="{{ route('home') }}" class="logo d-flex align-items-center">
+            <a href="{{ route('home') }}"  class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
                 <span style="font-size: 16px; color: white;">Catfish <br /> Automatic <br /> Feeder</span>
 
